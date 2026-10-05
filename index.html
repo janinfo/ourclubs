@@ -10,18 +10,18 @@
 <title>myclubs Tageskarte</title>
 <style>
 :root{--ink:#201f2b;--green:#66a65a;--paper:#fff;--cream:#fbe3d0;--grey:#9a9a9a;--tab:#b9b9bd;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+box-sizing:border-box}
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;min-height:100%;background:var(--ink);font-family:"Helvetica Neue",Arial,sans-serif;display:flex;justify-content:center}
-.app{width:100%;max-width:430px;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--ink)}
-header{position:relative;height:72px;display:flex;align-items:center;justify-content:center;color:#fff}
+body{margin:0;height:100%;overflow:hidden;background:var(--ink);font-family:"Helvetica Neue",Arial,sans-serif;display:flex;justify-content:center}
+.app{width:100%;max-width:430px;height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--ink)}
+header{position:relative;flex:none;padding-top:env(safe-area-inset-top,0px);height:calc(clamp(56px,8vh,72px) + env(safe-area-inset-top,0px));display:flex;align-items:center;justify-content:center;color:#fff}
 .logo{font-size:34px;font-weight:800;font-style:italic;letter-spacing:-1.5px}
 .logo span{font-weight:500}
 .close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;padding:10px}
-main{flex:1 0 auto;padding:12px 18px 18px;display:flex;align-items:flex-start}
-.card{flex:none;width:100%;aspect-ratio:1/1.85;border-radius:18px;background:var(--paper);overflow:hidden;display:flex;flex-direction:column;position:relative}
-.top{flex:0 0 60%;background:var(--green);color:#fff;text-align:center;padding:90px 16px 0;position:relative}
+main{flex:1 1 0;min-height:0;padding:8px 18px 14px;display:flex;align-items:stretch}
+.card{flex:1;width:100%;min-height:0;border-radius:18px;background:var(--paper);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.top{flex:0 0 60%;background:var(--green);color:#fff;text-align:center;padding:clamp(52px,10.5vh,90px) 16px 0;position:relative}
 .badge{position:absolute;left:18px;top:18px;width:56px;height:56px;pointer-events:none}
 .stage{position:absolute;left:0;top:0;width:369px;height:369px;transform:scale(.1518);transform-origin:0 0}
 .flip{position:absolute;left:45.6px;top:33.1px;width:280.8px;height:280.8px;transform:scaleX(-1)}
@@ -35,25 +35,22 @@ main{flex:1 0 auto;padding:12px 18px 18px;display:flex;align-items:flex-start}
 @keyframes flipcoin{0%,28%{transform:perspective(900px) rotateY(0)}45%,78%{transform:perspective(900px) rotateY(180deg)}95%,100%{transform:perspective(900px) rotateY(360deg)}}
 
 .stamp{position:absolute;right:22px;top:34px;color:#fff;font-size:20.4px;font-weight:500;letter-spacing:.3px;font-variant-numeric:tabular-nums}
-h1{text-wrap:balance;margin:0 0 12px;font-size:clamp(26px,8vw,33px);line-height:1.2;font-weight:900;font-style:italic;text-transform:uppercase}
-.top p{margin:0;font-size:clamp(16px,4.6vw,20px);line-height:1.45;color:rgba(255,255,255,.78)}
-.avatar{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:186px;height:186px;border-radius:50%;background:var(--ink);border:5px solid #fff;display:grid;place-items:center}
-.avatar svg{width:70px;height:70px}
-.bottom{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:100px;text-align:center}
-.name{font-size:34px;font-weight:800;color:#000;letter-spacing:.5px}
-.num{margin-top:6px;font-size:24px;color:var(--grey);letter-spacing:1px}
-nav{background:#fff;display:flex;justify-content:space-around;align-items:center;padding:20px 0 24px}
-nav svg{width:38px;height:38px;stroke:var(--tab);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-nav .home{width:38px;height:38px;display:block;opacity:.3}
+h1{text-wrap:balance;margin:0 0 clamp(6px,1.4vh,12px);font-size:clamp(21px,min(8vw,4.2vh),33px);line-height:1.2;font-weight:900;font-style:italic;text-transform:uppercase}
+.top p{margin:0;font-size:clamp(13px,min(4.6vw,2.5vh),20px);line-height:1.4;color:rgba(255,255,255,.78)}
+.avatar{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:clamp(108px,21vh,186px);height:clamp(108px,21vh,186px);border-radius:50%;background:var(--ink);border:4px solid #fff;display:grid;place-items:center}
+.avatar svg{width:38%;height:38%}
+.bottom{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:calc(clamp(108px,21vh,186px)/2 + 6px);text-align:center}
+.name{font-size:clamp(24px,4.2vh,34px);font-weight:800;color:#000;letter-spacing:.5px}
+.num{margin-top:6px;font-size:clamp(17px,3vh,24px);color:var(--grey);letter-spacing:1px}
+nav{background:#fff;display:flex;justify-content:space-around;align-items:center;padding:clamp(8px,2vh,20px) 0 calc(clamp(10px,2.4vh,24px) + env(safe-area-inset-bottom,0px))}
+nav svg{width:clamp(30px,4.6vh,38px);height:clamp(30px,4.6vh,38px);stroke:var(--tab);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+nav .home{width:clamp(30px,4.6vh,38px);height:clamp(30px,4.6vh,38px);display:block;opacity:.3}
 nav .on svg{stroke:var(--ink)}
-.fs .app{min-height:100vh;min-height:100dvh}
-.fs main{align-items:stretch}
-.fs .card{aspect-ratio:auto;flex:1;min-height:540px}
 #fsExit{cursor:pointer;pointer-events:auto}
 #hint{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 110px);transform:translateX(-50%);z-index:10;width:max-content;max-width:86%;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.96);color:#201f2b;font:500 14px/1.4 "Helvetica Neue",Arial,sans-serif;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s}
 #hint.on{opacity:1}
 [hidden]{display:none!important}
-.sel{flex:1 0 auto;padding:12px 18px 18px;display:flex;align-items:flex-start}
+.sel{flex:1 1 0;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 18px 14px;display:block}
 .panel{width:100%;background:#fff;border-radius:18px;padding:24px 20px 22px;color:#201f2b}
 .panel h2{margin:0 0 16px;font-size:26px;font-weight:900;font-style:italic;text-transform:uppercase}
 .studio{display:block;width:100%;text-align:left;margin:0 0 10px;padding:14px 16px;border:2px solid #e3e3e6;border-radius:14px;background:#fff;color:inherit;font:inherit;cursor:pointer}
