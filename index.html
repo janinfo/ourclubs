@@ -88,7 +88,7 @@ nav .on svg{stroke:var(--ink)}
 <label for="nameIn">Name</label>
 <input id="nameIn" type="text" maxlength="24" placeholder="z. B. Joe G" autocomplete="off" autocapitalize="words">
 <label for="numIn">Nummer</label>
-<input id="numIn" type="text" inputmode="numeric" maxlength="12" value="35743119" autocomplete="off">
+<input id="numIn" type="text" inputmode="numeric" maxlength="12" value="35743142" autocomplete="off">
 <button id="go" type="button" disabled>Tageskarte anzeigen</button>
 </section></main>
 <main id="cardView" hidden>
@@ -107,7 +107,7 @@ nav .on svg{stroke:var(--ink)}
       </div>
       <div class="bottom">
         <div class="name" id="nm">JOE G</div>
-        <div class="num" id="num">35743119</div>
+        <div class="num" id="num">35743142</div>
       </div>
     </section>
   </main>
@@ -168,7 +168,7 @@ nav .on svg{stroke:var(--ink)}
     var st=STUDIOS[sel];
     var h=$("ttl");h.textContent="";h.appendChild(document.createTextNode("Tageskarte"));h.appendChild(document.createElement("br"));h.appendChild(document.createTextNode(st.n));
     var ad=$("adr");ad.textContent="";ad.appendChild(document.createTextNode(st.n));ad.appendChild(document.createElement("br"));ad.appendChild(document.createTextNode(st.a));
-    $("nm").textContent=nameIn.value.trim();$("num").textContent=$("numIn").value.trim()||"35743119";
+    $("nm").textContent=nameIn.value.trim();$("num").textContent=$("numIn").value.trim()||"35743142";
     selV.hidden=true;cardV.hidden=false;window.scrollTo(0,0);fit();
   }
   var stream=null,scanAt=0,scanEl=$("scan"),camEl=$("cam");
