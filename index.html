@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#201f2b">
 <title>myclubs Tageskarte</title>
 <style>
-:root{--ink:#201f2b;--green:#66a65a;--paper:#fff;--cream:#fbe3d0;--grey:#9a9a9a;--tab:#b9b9bd;
+:root{--ink:#201f2b;--green:#66a65a;--accent:#fc281b;--paper:#fff;--cream:#fbe3d0;--grey:#9a9a9a;--tab:#b9b9bd;
 box-sizing:border-box}
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -22,8 +22,8 @@ header{position:relative;flex:none;height:calc(env(safe-area-inset-top,0px) + 50
 main{flex:1 1 0;min-height:0;padding:10px 7.6% 20px;display:flex;align-items:stretch}
 .card{flex:1;width:100%;min-height:0;border-radius:11px;background:var(--paper);overflow:hidden;display:flex;flex-direction:column;position:relative}
 .top{flex:0 0 60%;background:var(--green);color:#fff;text-align:center;padding:calc(109*var(--u,1px)) 5% 0;position:relative}
-.badge{position:absolute;left:calc(12.4*var(--u,1px));top:calc(14.5*var(--u,1px));width:calc(33*var(--u,1px));height:calc(33*var(--u,1px));pointer-events:none}
-.stage{position:absolute;left:0;top:0;width:369px;height:369px;transform:scale(var(--bs,.0894));transform-origin:0 0}
+.badge{position:absolute;left:calc(9.9*var(--u,1px));top:calc(12.1*var(--u,1px));width:calc(38*var(--u,1px));height:calc(38*var(--u,1px));pointer-events:none}
+.stage{position:absolute;left:0;top:0;width:369px;height:369px;transform:scale(var(--bs,.103));transform-origin:0 0}
 .flip{position:absolute;left:45.6px;top:33.1px;width:280.8px;height:280.8px;transform:scaleX(-1)}
 .ring{width:100%;height:100%;border-radius:50%;background:conic-gradient(from 0deg,rgba(32,31,43,0) 0%,rgba(32,31,43,0) 15%,rgba(32,31,43,.12) 19%,rgba(32,31,43,.5) 24%,rgb(32,31,43) 32%,rgb(32,31,43) 68%,rgba(32,31,43,.5) 76%,rgba(32,31,43,.12) 81%,rgba(32,31,43,0) 85%,rgba(32,31,43,0) 100%);-webkit-mask-image:radial-gradient(farthest-side,transparent 128.7px,#000 130.5px);mask-image:radial-gradient(farthest-side,transparent 128.7px,#000 130.5px);animation:spin 1.2s linear infinite}
 @keyframes spin{to{transform:rotate(-360deg)}}
@@ -57,13 +57,22 @@ nav .on svg{stroke:var(--ink)}
 .studio{display:block;width:100%;text-align:left;margin:0 0 10px;padding:14px 16px;border:2px solid #e3e3e6;border-radius:14px;background:#fff;color:inherit;font:inherit;cursor:pointer}
 .studio b{display:block;font-size:17px}
 .studio span{display:block;margin-top:2px;font-size:14px;color:var(--grey)}
-.studio[aria-checked="true"]{border-color:var(--green);background:#eef6ec}
+.studio[aria-checked="true"]{border-color:var(--accent);background:#fff1f0}
 .panel label{display:block;margin:18px 0 6px;font-size:14px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.6px}
 .panel input{width:100%;padding:14px 16px;border:2px solid #e3e3e6;border-radius:14px;font:500 18px "Helvetica Neue",Arial,sans-serif;color:#201f2b;background:#fff;outline:none}
-.panel input:focus{border-color:var(--green)}
-#go{display:block;width:100%;margin-top:20px;padding:16px;border:0;border-radius:14px;background:var(--green);color:#fff;font:800 18px "Helvetica Neue",Arial,sans-serif;cursor:pointer}
+.panel input:focus{border-color:var(--accent)}
+#go{display:block;width:100%;margin-top:20px;padding:16px;border:0;border-radius:14px;background:var(--accent);color:#fff;font:800 18px "Helvetica Neue",Arial,sans-serif;cursor:pointer}
 #go:disabled{opacity:.45;cursor:default}
 .name{padding:0 16px;max-width:100%;line-height:1.15;overflow-wrap:anywhere;text-transform:uppercase}
+#scan{position:fixed;top:0;right:0;bottom:0;left:0;z-index:30;background:radial-gradient(circle at 50% 40%,#2b2a38,#0d0d12);cursor:pointer;-webkit-tap-highlight-color:transparent;overflow:hidden}
+#scan video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.frame{position:absolute;left:50%;top:50%;width:min(68vmin,320px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:18px;box-shadow:0 0 0 200vmax rgba(0,0,0,.45)}
+.frame i{position:absolute;width:14%;height:14%;border:4px solid #fff}
+.frame .tl{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:18px}
+.frame .tr{top:0;right:0;border-left:0;border-bottom:0;border-top-right-radius:18px}
+.frame .bl{bottom:0;left:0;border-right:0;border-top:0;border-bottom-left-radius:18px}
+.frame .br{bottom:0;right:0;border-left:0;border-top:0;border-bottom-right-radius:18px}
+.frame p{position:absolute;top:calc(100% + 24px);left:50%;width:max(100%,260px);transform:translateX(-50%);margin:0;text-align:center;color:#fff;font:500 16px/1.4 "Helvetica Neue",Arial,sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.7)}
 @media (prefers-color-scheme:dark){body{background:#14131a}}
 </style>
 </head>
@@ -110,6 +119,10 @@ nav .on svg{stroke:var(--ink)}
     <span><svg viewBox="0 0 38 38"><rect x="8" y="10" width="5" height="18" rx="2"/><rect x="25" y="10" width="5" height="18" rx="2"/><rect x="3" y="14" width="3" height="10" rx="1.5"/><rect x="32" y="14" width="3" height="10" rx="1.5"/><path d="M13 19h12"/></svg></span>
   </nav>
 </div>
+<div id="scan" role="button" tabindex="0" aria-label="QR-Code scannen, zum Fortfahren tippen" hidden>
+<video id="cam" autoplay muted playsinline></video>
+<div class="frame"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><p id="scanHint">QR-Code scannen – zum Fortfahren tippen</p></div>
+</div>
 <div id="hint" role="status">Echtes Vollbild erlaubt iOS für Webseiten nicht. Tipp: Teilen → „Zum Home-Bildschirm".</div>
 <script>
 (function(){
@@ -151,20 +164,37 @@ nav .on svg{stroke:var(--ink)}
   $("numIn").addEventListener("keydown",function(e){if(e.key==="Enter"&&!go.disabled){e.preventDefault();showCard();}});
   nameIn.addEventListener("keydown",function(e){if(e.key==="Enter"&&!go.disabled){e.preventDefault();showCard();}});
   go.addEventListener("click",showCard);
-  function showCard(){
+  function revealCard(){
     var st=STUDIOS[sel];
     var h=$("ttl");h.textContent="";h.appendChild(document.createTextNode("Tageskarte"));h.appendChild(document.createElement("br"));h.appendChild(document.createTextNode(st.n));
     var ad=$("adr");ad.textContent="";ad.appendChild(document.createTextNode(st.n));ad.appendChild(document.createElement("br"));ad.appendChild(document.createTextNode(st.a));
     $("nm").textContent=nameIn.value.trim();$("num").textContent=$("numIn").value.trim()||"35743119";
     selV.hidden=true;cardV.hidden=false;window.scrollTo(0,0);fit();
   }
+  var stream=null,scanAt=0,scanEl=$("scan"),camEl=$("cam");
+  function stopCam(){if(stream){stream.getTracks().forEach(function(t){t.stop();});stream=null;}camEl.srcObject=null;}
+  function showCard(){
+    scanEl.hidden=false;scanAt=Date.now();$("scanHint").textContent="QR-Code scannen – zum Fortfahren tippen";
+    if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+      navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}},audio:false}).then(function(st){
+        if(scanEl.hidden){st.getTracks().forEach(function(t){t.stop();});return;}
+        stream=st;camEl.srcObject=st;var r=camEl.play();if(r&&r.catch)r.catch(function(){});
+      }).catch(function(){$("scanHint").textContent="Kamera nicht verfügbar – zum Fortfahren tippen";});
+    }else{$("scanHint").textContent="Kamera nicht verfügbar – zum Fortfahren tippen";}
+  }
+  function leaveScan(){
+    if(Date.now()-scanAt<500)return;
+    stopCam();scanEl.hidden=true;revealCard();
+  }
+  scanEl.addEventListener("click",leaveScan);
+  scanEl.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();leaveScan();}});
   function showSelect(){cardV.hidden=true;selV.hidden=false;window.scrollTo(0,0);fit();}
   function fit(){
     var m=cardV.hidden?selV:cardV,app=document.querySelector(".app");
     var w=app.clientWidth*0.848,h=m.clientHeight-30;
     if(w<=0||h<=0)return;
     var u=Math.max(.5,Math.min(w/318,h/598));
-    root.style.setProperty("--u",u+"px");root.style.setProperty("--bs",(33*u/369));
+    root.style.setProperty("--u",u+"px");root.style.setProperty("--bs",(38*u/369));
   }
   window.addEventListener("resize",fit);window.addEventListener("orientationchange",fit);
   if(window.visualViewport)window.visualViewport.addEventListener("resize",fit);
